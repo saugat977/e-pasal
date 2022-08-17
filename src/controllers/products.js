@@ -4,7 +4,7 @@ const getAllProducts = (req, res) => {
         res.status(200).json({success: true})
 
     } catch (error) {
-        console.log(error);
+        res.status(404).json({error:error})
     }
 };
 
@@ -13,7 +13,7 @@ const getProduct = (req, res) => {
         console.log('Here is a single product');
         res.status(200).json({success: true})
     } catch (error) {
-        console.log(error);
+        res.status(404).json({error:error})
     }
 }
 
