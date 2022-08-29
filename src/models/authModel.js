@@ -1,17 +1,33 @@
-exports.users= [
-    {
-        name:'user1',
-        password:'12345',
-        email:'user1@gmail.com'
+const mongoose = require('mongoose')
+const uuidv1 = require('uuidv1')
+//A nodejs inbuilt package, converts readable into crypted form
+const crypto = require('crypto')
+
+const authSchema = new mongoose.Schema({
+    name:{
+        type:String,
+        required:true,
+        trim:true
     },
-    {
-        name:'user2',
-        password:'123456',
-        email:'user2@gmail.com'
+    email:{
+        type:String,
+        trquired:true
     },
-    {
-        name:'user3',
-        password:'1234567',
-        email:'user3@gmail.com'
+    role:{
+        type:Number,
+        default:0,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    salt:String,
+    isVerified:{
+        type:Boolean,
+        default:false
     }
-]
+    
+})
+
+module.exports = mongoose.model("Users",authSchema)

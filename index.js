@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
-const authRoutes = require('./src/routes/authRoute')
 require('dotenv').config()
+const database = require('./src/database/connection')
+const authRoutes = require('./src/routes/authRoute')
+
 
 app.use(express.json())
 
